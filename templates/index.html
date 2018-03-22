@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="zh-CN">
+<head>
+<style type="text/css">
+
+
+    h1{font-family: Helvetica, 'Hiragino Sans GB', 'Microsoft Yahei', '微软雅黑', Arial, sans-serif;}
+
+    div#background{
+position:fixed;
+top:0;
+left:0;
+bottom:0;
+right:0;
+z-index:-1;
+}
+div#background > img {
+height:100%;
+width:100%;
+border:0;
+}
+
+</style>
+
+    <meta charset="UTF-8">
+    <title>音乐推荐系统</title>
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap-theme.css" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
+
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+<body class=" login"
+  data-admin-utc-offset="0">
+<div id="background"><img src="/static/DSC_8019.jpg" /></div>
+<div class="row">
+  <div class="col-md-8">.col-md-8</div>
+  <div class="col-md-4">.col-md-4</div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+      <div id="container">
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+            <h1 id="site-name"><a href="/index/">音乐推荐系统</a></h1>
+        </div>
+
+    </div>
+    <!-- END Header -->
+
+    <!-- Content -->
+    <div id="content" class="colM">
+        <div id="content-main">
+
+
+
+<form action="/index/" method="post" id="login-form">
+    {% csrf_token %}
+  <div class="form-row">
+
+    <label class="required" for="id_username">UserID:</label> <input type="text" name="userID" autofocus maxlength="254" required id="id_username" />
+  </div>
+
+
+
+  <div class="submit-row">
+    <label>&nbsp;</label><input type="submit" value="Submit" />
+  </div>
+</form>
+
+</div>
+
+
+
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+
+</div>
+
+    </div>
+  <div class="col-md-5">
+      <div class="table-responsive">
+        <table  class="table table-bordered">
+            <thead>
+            {% if songDict.items %}
+            <th>推荐歌曲</th>
+            {% endif %}
+            </thead>
+            <tbody>
+                {% for key,value in songDict.items %}
+                <tr>
+                 <td bgcolor="#f0f8ff">{{value}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+        </table>
+      </div>
+  </div>
+        <div class="col-md-1"></div>
+</div>
+
+
+
+
+
+</body>
+</html>
